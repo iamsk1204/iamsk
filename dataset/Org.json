@@ -1,5 +1,5 @@
 {
-	"name": "DelimitedText1",
+	"name": "Org",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "copyactivity_blobstorage",
@@ -10,6 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": "May Business Codeblocks v2.xlsx.csv",
 				"folderPath": "Output",
 				"container": "forcopyactivity"
 			},
