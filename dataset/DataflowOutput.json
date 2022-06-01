@@ -1,0 +1,41 @@
+{
+	"name": "DataflowOutput",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "copyactivity_blobstorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "DataFlowOutput",
+				"folderPath": "Output",
+				"container": "forcopyactivity"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Lead",
+				"type": "String"
+			},
+			{
+				"name": "BU",
+				"type": "String"
+			},
+			{
+				"name": "BU Description",
+				"type": "String"
+			},
+			{
+				"name": "Char. Count Cannot Be More Than 30",
+				"type": "String"
+			}
+		]
+	}
+}
