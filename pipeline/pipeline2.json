@@ -1,0 +1,46 @@
+{
+	"name": "pipeline2",
+	"properties": {
+		"activities": [
+			{
+				"name": "Power Query1",
+				"type": "ExecuteWranglingDataflow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "1.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "powerquery1",
+						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"queries": [
+						{
+							"queryName": "UserQuery",
+							"dataflowSinks": [
+								{
+									"name": "UserQueryDataflowOutput",
+									"dataset": {
+										"referenceName": "DataflowOutput",
+										"type": "DatasetReference"
+									},
+									"script": "sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\tLead as string,\n\t\tBU as string,\n\t\t{BU Description} as string,\n\t\t{Char. Count Cannot Be More Than 30} as string\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> UserQueryDataflowOutput"
+								}
+							]
+						}
+					]
+				}
+			}
+		],
+		"annotations": []
+	}
+}
