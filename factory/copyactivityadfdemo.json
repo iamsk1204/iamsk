@@ -1,0 +1,9 @@
+{
+	"name": "copyactivityadfdemo",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "33e84e6d-c4f9-4b92-b581-8dbdb7cdca79",
+		"tenantId": "8fcd98e3-c80a-45b3-8c2a-e5fa68a39534"
+	}
+}
