@@ -1,0 +1,43 @@
+{
+	"name": "NEW_LE",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "copyactivity_blobstorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"sheetName": "New LE",
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "May Business Codeblocks v2.xlsx",
+				"folderPath": "Input",
+				"container": "forcopyactivity"
+			},
+			"firstRowAsHeader": true
+		},
+		"schema": [
+			{
+				"name": "Lead",
+				"type": "String"
+			},
+			{
+				"name": "LE",
+				"type": "String"
+			},
+			{
+				"name": "LE Description",
+				"type": "String"
+			},
+			{
+				"name": "Comments (OK in Mercury)",
+				"type": "String"
+			},
+			{
+				"name": "Char. Count Cannot Be More Than 30",
+				"type": "String"
+			}
+		]
+	}
+}

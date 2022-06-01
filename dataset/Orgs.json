@@ -1,0 +1,39 @@
+{
+	"name": "Orgs",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "copyactivity_blobstorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"sheetName": "New BU",
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "May Business Codeblocks v2.xlsx",
+				"folderPath": "Input",
+				"container": "forcopyactivity"
+			},
+			"firstRowAsHeader": true
+		},
+		"schema": [
+			{
+				"name": "Lead",
+				"type": "String"
+			},
+			{
+				"name": "BU",
+				"type": "String"
+			},
+			{
+				"name": "BU Description",
+				"type": "String"
+			},
+			{
+				"name": "Char. Count Cannot Be More Than 30",
+				"type": "String"
+			}
+		]
+	}
+}
