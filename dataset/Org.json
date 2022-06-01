@@ -1,0 +1,24 @@
+{
+	"name": "Org",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "copyactivity_blobstorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "May Business Codeblocks v2.xlsx.csv",
+				"folderPath": "Output",
+				"container": "forcopyactivity"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

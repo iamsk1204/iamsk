@@ -1,0 +1,45 @@
+{
+	"name": "LE_Output",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "copyactivity_blobstorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "new_le's",
+				"folderPath": "Output",
+				"container": "forcopyactivity"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Lead",
+				"type": "String"
+			},
+			{
+				"name": "LE",
+				"type": "String"
+			},
+			{
+				"name": "LE Description",
+				"type": "String"
+			},
+			{
+				"name": "Comments (OK in Mercury)",
+				"type": "String"
+			},
+			{
+				"name": "Char. Count Cannot Be More Than 30",
+				"type": "String"
+			}
+		]
+	}
+}

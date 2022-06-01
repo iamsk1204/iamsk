@@ -1,0 +1,28 @@
+{
+	"name": "powerquery1",
+	"properties": {
+		"type": "WranglingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"name": "LE_Output",
+					"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~>  LE_Output",
+					"dataset": {
+						"referenceName": "LE_Output",
+						"type": "DatasetReference"
+					}
+				},
+				{
+					"name": "Orgs",
+					"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~>  Orgs",
+					"dataset": {
+						"referenceName": "Orgs",
+						"type": "DatasetReference"
+					}
+				}
+			],
+			"script": "section Section1;\r\nshared LE_Output = let AdfDoc = AzureStorage.BlobContents(\"https://democopyactivity.blob.core.windows.net/forcopyactivity/Output/new_le's\"),Csv = Csv.Document(AdfDoc, [Delimiter = \",\", Encoding = TextEncoding.Utf8, QuoteStyle = QuoteStyle.Csv]), PromotedHeaders = Table.PromoteHeaders(Csv, [PromoteAllScalars = true]),\r\n  #\"Promoted headers\" = Table.PromoteHeaders(PromotedHeaders, [PromoteAllScalars = true]),\r\n  #\"Promoted headers 1\" = Table.PromoteHeaders(#\"Promoted headers\", [PromoteAllScalars = true]),\r\n  #\"Demoted headers\" = Table.DemoteHeaders(#\"Promoted headers 1\") in  #\"Demoted headers\";\r\nshared Orgs = let AdfDoc = AzureStorage.BlobContents(\"https://democopyactivity.blob.core.windows.net/forcopyactivity/Input/May Business Codeblocks v2.xlsx\"), Excel = Excel.Workbook(AdfDoc),ExcelSheet = Excel{[Item=\"New BU\",Kind=\"Sheet\"]}[Data], PromotedHeaders = Table.PromoteHeaders(ExcelSheet, [PromoteAllScalars = true]),\r\n  #\"Removed columns\" = Table.RemoveColumns(PromotedHeaders, {\"Char. Count Cannot Be More Than 30\", \"Column5\", \"Column6\"}) in #\"Removed columns\";\r\nshared UserQuery = let Source = #\"LE_Output\" in Source;\r\n",
+			"documentLocale": "en-us"
+		}
+	}
+}
